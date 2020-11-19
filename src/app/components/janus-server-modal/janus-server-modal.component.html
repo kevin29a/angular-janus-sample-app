@@ -1,0 +1,45 @@
+<div class='header'>
+  <h1 mat-dialog-title>Devices</h1>
+  <span class='flex'></span>
+  <i
+    class="fas fa-times"
+    (click)="onCancel()"
+    ></i>
+</div>
+<div mat-dialog-content>
+  <form
+    [formGroup]='serverForm'>
+
+    <div class='form-row'>
+      <label>Server URL</label>
+      <span class='flex'></span>
+      <input formControlName='url' type='text'/>
+    </div>
+
+    <div class='form-row'>
+      <label>Room ID</label>
+      <span class='flex'></span>
+      <input formControlName='roomId' type='text'/>
+    </div>
+
+    <div class='form-row'>
+      <label>Room ID is Numeric</label>
+      <span class='flex'></span>
+      <input formControlName='numericId' type='checkbox'/>
+    </div>
+
+    <div class='form-row'>
+      <label>PIN</label>
+      <span class='flex'></span>
+      <input formControlName='pin' type='text'/>
+    </div>
+
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class='button-row center-flex' mat-dialog-actions>
+  <button (click)='onSave()' mat-raised-button color="primary">Save</button>
+</div>
+

@@ -1,0 +1,40 @@
+mat-form-field {
+    width: 100%;
+}
+
+div.header {
+    display: flex;
+    justify-content: center;
+
+    h1 {
+        font-size: 18px;
+    }
+    
+    i {
+        margin-top: 8px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+}
+
+p {
+    font-size: 15px;
+}
+
+span.flex {
+    flex-grow: 1;
+}
+
+div.button-row {
+    /*
+    button {
+        color: #fff;
+        width: 160px;
+        font-family: NV_OpenSansRegular;
+        font-weight: 600;
+        font-size: 12px;
+        border-radius: 20px;
+    }
+    */
+    // justify-content: center;
+}

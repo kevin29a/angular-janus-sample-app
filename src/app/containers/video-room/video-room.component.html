@@ -1,0 +1,30 @@
+<div
+  class='container'
+  (click)='startDockTimer()'
+  (mouseenter)='startDockTimer()'
+  (pointermove)='startDockTimer()'
+  (mouseleave)='hideDock()'
+>
+  <mat-toolbar color='primary'>
+    janus-angular Demo App
+  </mat-toolbar>
+
+  <janus-videoroom
+    [wsUrl]='wsUrl'
+    [httpUrl]='httpUrl'
+    [roomId]='roomId'
+    [isMuted]='isMuted'
+    [devices]='devices'
+    [pin]='pin'
+    (janusError)='onError($event)'
+  ></janus-videoroom>
+
+  <app-dock
+    [@openClose]="dockOpen ? 'open' : 'closed'"
+    [isMuted]='isMuted'
+    (toggleMute)='toggleMute()'
+    (openDevices)='onOpenDevices()'
+    (openServer)='onOpenServer()'
+  >
+  </app-dock>
+</div>

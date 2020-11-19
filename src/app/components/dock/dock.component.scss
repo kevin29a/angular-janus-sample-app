@@ -1,0 +1,50 @@
+div.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    i {
+        font-size: 18px;
+        background-color: #7b1fa2;
+        color: #ffffff;
+        text-align: center;
+        padding: 22px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        margin: 0 8px 0 8px;
+        box-shadow: 0px 0px 10px 0px #06386b;
+        cursor: pointer;
+    }
+
+    i:hover, i.red:hover {
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,.29);
+    }
+
+    i.red {
+        background-color: red;
+        box-shadow: 0px 0px 10px 0px red;
+    }
+
+    p {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0 0 0;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: -0.28px;
+        color: #ffffff;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    div.container {
+        i {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+janus-videoroom {
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    width: 100%;
+}
+
+div.container {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}
+
+app-dock {
+    position: absolute;
+    width: 100%;
+    height: 120px;
+}
+
+@media (max-width: 599px) {
+    janus-videoroom {
+        top: 55px;
+    }
+}

@@ -1,0 +1,26 @@
+<div
+  class='container center-flex'
+>
+
+  <i
+    class="fas fa-server"
+    matTooltip="Janus Server"
+    (click)='onOpenServer()'>
+  </i>
+
+  <i
+    class="fas fa-cog"
+    matTooltip="Devices"
+    (click)='onOpenDevices()'>
+  </i>
+
+  <i
+    class="fas"
+    [matTooltip]="isMuted ? 'Unmute' : 'Mute'"
+    [class.red]='isMuted'
+    [class.fa-microphone-slash]='isMuted'
+    [class.fa-microphone]='!isMuted'
+    (click)='onToggleMute()'>
+  </i>
+
+</div>
