@@ -4887,10 +4887,10 @@ istanbul-reports@^3.0.2:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
 
-janus-angular@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/janus-angular/-/janus-angular-0.1.1.tgz#80c5e7b35365f0902044fc5ad7843312a8638bea"
-  integrity sha512-WosKiLJQ+jKHF0dAi6b/kdJXG6Ff7IvWYhLCgpFSpt6WKLDrQhWq6+QMisdzldN/vdm4NY0Xby0mJmKnZ22nsg==
+janus-angular@^0.1.4b:
+  version "0.1.4-b"
+  resolved "https://registry.yarnpkg.com/janus-angular/-/janus-angular-0.1.4-b.tgz#2d34c27ececc92c50da209f685930f9d75ca7c94"
+  integrity sha512-QZ7C/tATCBAg/JSQ+uUcPaMwBEdBiWeZe707m/JJRoex/b3QsQ911u6T5ITBwNc4tniQo2CZXrmxbwFMNsiljQ==
   dependencies:
     tslib "^2.0.0"
 

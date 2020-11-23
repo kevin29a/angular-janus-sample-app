@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "~11.0.1",
     "@angular/router": "~11.0.1",
     "@ngrx/component-store": "^10.0.1",
-    "janus-angular": "^0.1.1",
+    "janus-angular": "^0.1.4b",
     "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
