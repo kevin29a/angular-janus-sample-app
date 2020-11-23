@@ -8,6 +8,11 @@ import { JanusServerModalComponent } from './janus-server-modal.component';
 describe('JanusServerModalComponent', () => {
   let component: JanusServerModalComponent;
   let fixture: ComponentFixture<JanusServerModalComponent>;
+  const data = {
+    url: 'url',
+    roomId: 'roomId',
+    pin: 'pin',
+  };
 
   const mockFormBuilder = {
     group: () => {}
@@ -19,7 +24,7 @@ describe('JanusServerModalComponent', () => {
       providers: [
         {provide: MatDialogRef, useValue: null},
         {provide: FormBuilder, useValue: mockFormBuilder},
-        {provide: MAT_DIALOG_DATA, useValue: null},
+        {provide: MAT_DIALOG_DATA, useValue: data},
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     })
@@ -40,23 +45,23 @@ describe('JanusServerModalComponent', () => {
     const wsUrl = 'wss://localhost:8080/janus';
     const httpUrl = 'http://localhost:8080/janus';
     it('should return a numeric room id', () => {
-      const ret = component.calculateReturn('123', 'url', true);
+      const ret = component.calculateReturn('123', 'url', true, 'pin');
       expect(ret.roomId).toEqual(123);
     });
 
     it('should return a string room id', () => {
-      const ret = component.calculateReturn('123', 'url', false);
+      const ret = component.calculateReturn('123', 'url', false, 'pin');
       expect(ret.roomId).toEqual('123');
     });
 
     it('should return a websocket url', () => {
-      const ret = component.calculateReturn('123', wsUrl, false);
+      const ret = component.calculateReturn('123', wsUrl, false, 'pin');
       expect(ret.wsUrl).toEqual(wsUrl);
       expect(ret.httpUrl).toEqual(null);
     });
 
     it('should return an http url', () => {
-      const ret = component.calculateReturn('123', httpUrl, false);
+      const ret = component.calculateReturn('123', httpUrl, false, 'pin');
       expect(ret.wsUrl).toEqual(null);
       expect(ret.httpUrl).toEqual(httpUrl);
     });
