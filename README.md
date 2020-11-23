@@ -6,8 +6,9 @@ You can read the docs for the `janus-angular` library [Here](https://kevin29a.gi
 
 ## Running
 
-This can be run locally by the standard command:
+This can be run locally by installing dependencies and using the standard `ng` command:
 
 ```
+yarn install
 ng serve
 ```
