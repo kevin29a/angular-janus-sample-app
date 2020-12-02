@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, ChangeDetectionStrategy } from '@
 
 import { first } from 'rxjs/operators';
 
-import { Devices, WebrtcService } from 'janus-angular';
+import { Devices, WebrtcService, JanusRole } from 'janus-angular';
 
 import { DevicesModalComponent } from '../../components/devices-modal/devices-modal.component';
 import { JanusServerModalComponent } from '../../components/janus-server-modal/janus-server-modal.component';
@@ -47,6 +47,7 @@ export class VideoRoomComponent implements OnInit {
   wsUrl = 'wss://janus.conf.meetecho.com/ws';
   httpUrl: string;
   pin: string;
+  role = JanusRole.publisher;
 
   dockOpen = false;
   moveTimeout: any;
@@ -95,9 +96,15 @@ export class VideoRoomComponent implements OnInit {
   }
 
   onOpenServer(): void {
+    const data = {
+      url: this.wsUrl,
+      roomId: this.roomId,
+      pin: this.pin,
+      role: this.role,
+    };
     const dialogRef = this.dialog.open(JanusServerModalComponent, {
       width: '360px',
-      data: {url: this.wsUrl, roomId: this.roomId, pin: this.pin}
+      data,
     });
 
     dialogRef.afterClosed().pipe(first()).subscribe((result) => {
@@ -106,6 +113,7 @@ export class VideoRoomComponent implements OnInit {
         this.httpUrl = result.httpUrl;
         this.roomId = result.roomId;
         this.pin = result.pin;
+        this.role = result.role;
       }
     });
   }

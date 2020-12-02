@@ -34,6 +34,18 @@
       <input formControlName='pin' type='text'/>
     </div>
 
+    <div class='form-row'>
+      <label>role</label>
+      <span class='flex'></span>
+      <select formControlName='role'>
+        <option
+          *ngFor='let role of roles'
+          [value]='role'>
+          {{ role }}
+        </option>
+      </select>
+    </div>
+
   </form>
 </div>
 

@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+import { JanusRole } from 'janus-angular';
+
 @Component({
   selector: 'app-janus-server-modal',
   templateUrl: './janus-server-modal.component.html',
@@ -12,6 +14,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   ]
 })
 export class JanusServerModalComponent implements OnInit {
+
+  roles = [
+    JanusRole.publisher,
+    JanusRole.listener,
+  ];
 
   serverForm;
   constructor(
@@ -26,6 +33,7 @@ export class JanusServerModalComponent implements OnInit {
       roomId: [this.data.roomId, [Validators.required]],
       numericId: [true, [Validators.required]],
       pin: [this.data.pin, []],
+      role: [this.data.role, []],
     });
   }
 
@@ -33,7 +41,7 @@ export class JanusServerModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  calculateReturn(roomId, url, numericId, pin): any {
+  calculateReturn(roomId, url, numericId, pin, role): any {
     // Given the values of the form, create our return object
 
     let wsUrl = url;
@@ -50,6 +58,7 @@ export class JanusServerModalComponent implements OnInit {
       wsUrl,
       httpUrl,
       pin,
+      role,
     };
   }
 
@@ -58,8 +67,9 @@ export class JanusServerModalComponent implements OnInit {
     const url = this.serverForm.get('url').value;
     const numericId = this.serverForm.get('numericId').value;
     const pin = this.serverForm.get('pin').value;
+    const role = this.serverForm.get('role').value;
 
-    const ret = this.calculateReturn(roomId, url, numericId, pin);
+    const ret = this.calculateReturn(roomId, url, numericId, pin, role);
     this.dialogRef.close(ret);
   }
 }
