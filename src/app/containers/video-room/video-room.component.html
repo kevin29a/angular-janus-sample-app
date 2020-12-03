@@ -15,9 +15,11 @@
     [roomId]='roomId'
     [isMuted]='isMuted'
     [devices]='devices'
+    [component]='component'
     [pin]='pin'
     (janusError)='onError($event)'
-  ></janus-videoroom>
+  >
+  </janus-videoroom>
 
   <app-dock
     [@openClose]="dockOpen ? 'open' : 'closed'"

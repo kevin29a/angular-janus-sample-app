@@ -17,6 +17,8 @@ import { DevicesModalComponent } from './components/devices-modal/devices-modal.
 import { JanusServerModalComponent } from './components/janus-server-modal/janus-server-modal.component';
 import { VideoRoomComponent } from './containers/video-room/video-room.component';
 import { DockComponent } from './components/dock/dock.component';
+import { SelfVideoComponent } from './components/self-video/self-video.component';
+import { CustomVideoRoomComponent } from './components/custom-video-room/custom-video-room.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { DockComponent } from './components/dock/dock.component';
     VideoRoomComponent,
     DevicesModalComponent,
     JanusServerModalComponent,
+    SelfVideoComponent,
+    CustomVideoRoomComponent,
   ],
   imports: [
     BrowserModule,

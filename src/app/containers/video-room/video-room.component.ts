@@ -4,6 +4,7 @@ import { first } from 'rxjs/operators';
 
 import { Devices, WebrtcService } from 'janus-angular';
 
+import { CustomVideoRoomComponent } from '../../components/custom-video-room/custom-video-room.component';
 import { DevicesModalComponent } from '../../components/devices-modal/devices-modal.component';
 import { JanusServerModalComponent } from '../../components/janus-server-modal/janus-server-modal.component';
 
@@ -43,14 +44,19 @@ import {
 export class VideoRoomComponent implements OnInit {
 
   isMuted = false;
-  roomId = 1234;
-  wsUrl = 'wss://janus.conf.meetecho.com/ws';
+  roomId = '5678';
+  // wsUrl = 'wss://janus.conf.meetecho.com/ws';
+  wsUrl = 'ws://127.0.0.1:8188/janus';
   httpUrl: string;
   pin: string;
+  // pin = 'Osbm2lWO2jE0g2trQkQV4w';
 
   dockOpen = false;
   moveTimeout: any;
   devices: Devices;
+
+  component = CustomVideoRoomComponent;
+  // component = null;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
