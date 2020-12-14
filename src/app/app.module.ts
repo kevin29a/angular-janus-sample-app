@@ -17,6 +17,10 @@ import { DevicesModalComponent } from './components/devices-modal/devices-modal.
 import { JanusServerModalComponent } from './components/janus-server-modal/janus-server-modal.component';
 import { VideoRoomComponent } from './containers/video-room/video-room.component';
 import { DockComponent } from './components/dock/dock.component';
+import { MinimalVideoRoomComponent } from './containers/minimal-video-room/minimal-video-room.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +29,11 @@ import { DockComponent } from './components/dock/dock.component';
     VideoRoomComponent,
     DevicesModalComponent,
     JanusServerModalComponent,
+    MinimalVideoRoomComponent,
+    NavBarComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     ReactiveFormsModule,
     JanusModule,
