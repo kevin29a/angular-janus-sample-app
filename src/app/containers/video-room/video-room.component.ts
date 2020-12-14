@@ -44,8 +44,9 @@ import {
 export class VideoRoomComponent implements OnInit {
 
   isMuted = false;
-  roomId = '5678';
+  // roomId = 1234;
   // wsUrl = 'wss://janus.conf.meetecho.com/ws';
+  roomId = 1234;
   wsUrl = 'ws://127.0.0.1:8188/janus';
   httpUrl: string;
   pin: string;

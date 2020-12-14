@@ -19,6 +19,10 @@ import { VideoRoomComponent } from './containers/video-room/video-room.component
 import { DockComponent } from './components/dock/dock.component';
 import { SelfVideoComponent } from './components/self-video/self-video.component';
 import { CustomVideoRoomComponent } from './components/custom-video-room/custom-video-room.component';
+import { MinimalVideoRoomComponent } from './containers/minimal-video-room/minimal-video-room.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +33,11 @@ import { CustomVideoRoomComponent } from './components/custom-video-room/custom-
     JanusServerModalComponent,
     SelfVideoComponent,
     CustomVideoRoomComponent,
+    MinimalVideoRoomComponent,
+    NavBarComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     ReactiveFormsModule,
     JanusModule,

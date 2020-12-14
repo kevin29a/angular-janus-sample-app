@@ -5,9 +5,8 @@
   (pointermove)='startDockTimer()'
   (mouseleave)='hideDock()'
 >
-  <mat-toolbar color='primary'>
-    janus-angular Demo App
-  </mat-toolbar>
+
+  <app-nav-bar></app-nav-bar>
 
   <janus-videoroom
     [wsUrl]='wsUrl'
