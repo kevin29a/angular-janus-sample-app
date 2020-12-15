@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 
@@ -17,24 +18,30 @@ import { DevicesModalComponent } from './components/devices-modal/devices-modal.
 import { JanusServerModalComponent } from './components/janus-server-modal/janus-server-modal.component';
 import { VideoRoomComponent } from './containers/video-room/video-room.component';
 import { DockComponent } from './components/dock/dock.component';
-import { SelfVideoComponent } from './components/self-video/self-video.component';
-import { CustomVideoRoomComponent } from './components/custom-video-room/custom-video-room.component';
+import { ClockVideoRoomComponent } from './components/clock-video-room/clock-video-room.component';
 import { MinimalVideoRoomComponent } from './containers/minimal-video-room/minimal-video-room.component';
+import { CustomVideoRoomComponent } from './containers/custom-video-room/custom-video-room.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { CustomVideoRoomDockComponent } from './components/custom-video-room-dock/custom-video-room-dock.component';
+import { ComponentSelectorModalComponent } from './components/component-selector-modal/component-selector-modal.component';
+import { RoundVideoRoomComponent } from './components/round-video-room/round-video-room.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DockComponent,
-    VideoRoomComponent,
-    DevicesModalComponent,
-    JanusServerModalComponent,
-    SelfVideoComponent,
+    ClockVideoRoomComponent,
     CustomVideoRoomComponent,
+    DevicesModalComponent,
+    DockComponent,
+    JanusServerModalComponent,
     MinimalVideoRoomComponent,
     NavBarComponent,
+    VideoRoomComponent,
+    CustomVideoRoomDockComponent,
+    ComponentSelectorModalComponent,
+    RoundVideoRoomComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -45,8 +52,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MatButtonModule,
     MatDialogModule,
     MatDividerModule,
-    MatTooltipModule,
+    MatRadioModule,
     MatToolbarModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

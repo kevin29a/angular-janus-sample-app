@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelfVideoComponent } from './self-video.component';
+import { RoundVideoRoomComponent } from './round-video-room.component';
 
-describe('SelfVideoComponent', () => {
-  let component: SelfVideoComponent;
-  let fixture: ComponentFixture<SelfVideoComponent>;
+describe('RoundVideoRoomComponent', () => {
+  let component: RoundVideoRoomComponent;
+  let fixture: ComponentFixture<RoundVideoRoomComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelfVideoComponent ]
+      declarations: [ RoundVideoRoomComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelfVideoComponent);
+    fixture = TestBed.createComponent(RoundVideoRoomComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

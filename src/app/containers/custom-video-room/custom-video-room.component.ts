@@ -2,9 +2,11 @@ import { ChangeDetectorRef, Component, OnInit, ChangeDetectionStrategy } from '@
 
 import { first } from 'rxjs/operators';
 
-import { Devices, WebrtcService } from 'janus-angular';
+import { Devices, WebrtcService, VideoRoomComponent } from 'janus-angular';
 
-import { DevicesModalComponent } from '../../components/devices-modal/devices-modal.component';
+import { ClockVideoRoomComponent } from '../../components/clock-video-room/clock-video-room.component';
+import { RoundVideoRoomComponent } from '../../components/round-video-room/round-video-room.component';
+import { ComponentSelectorModalComponent } from '../../components/component-selector-modal/component-selector-modal.component';
 import { JanusServerModalComponent } from '../../components/janus-server-modal/janus-server-modal.component';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -19,9 +21,9 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-video-room',
-  templateUrl: './video-room.component.html',
-  styleUrls: ['./video-room.component.scss'],
+  selector: 'app-customvideo-room',
+  templateUrl: './custom-video-room.component.html',
+  styleUrls: ['./custom-video-room.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('openClose', [
@@ -40,20 +42,24 @@ import {
     ]),
   ]
 })
-export class VideoRoomComponent implements OnInit {
+export class CustomVideoRoomComponent implements OnInit {
 
-  isMuted = false;
+  httpUrl: string;
   // roomId = 1234;
   // wsUrl = 'wss://janus.conf.meetecho.com/ws';
   roomId = 1234;
   wsUrl = 'ws://127.0.0.1:8188/janus';
-  httpUrl: string;
   pin: string;
-  // pin = 'Osbm2lWO2jE0g2trQkQV4w';
 
   dockOpen = false;
   moveTimeout: any;
-  devices: Devices;
+
+  // component = ClockVideoRoomComponent;
+  component = RoundVideoRoomComponent;
+  allComponents = {
+    Clock: ClockVideoRoomComponent,
+    Round: RoundVideoRoomComponent,
+  };
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -61,9 +67,7 @@ export class VideoRoomComponent implements OnInit {
     private dialog: MatDialog,
   ){}
 
-  async ngOnInit(): Promise<void> {
-    this.devices = await this.webrtc.getDefaultDevices();
-  }
+  ngOnInit(): void { }
 
   hideDock(): void { this.dockOpen = false; }
   startDockTimer(): void {
@@ -79,19 +83,25 @@ export class VideoRoomComponent implements OnInit {
     }, 3000);
   }
 
-  toggleMute(): void {
-    this.isMuted = !this.isMuted;
-  }
+  onOpenComponents(): void {
+    const current = Object.keys(
+      this.allComponents
+    ).map((key) => {
+      return {name: key, component: this.allComponents[key]};
+    }).filter((x) => x.component === this.component)[0].name;
 
-  onOpenDevices(): void {
-    const dialogRef = this.dialog.open(DevicesModalComponent, {
+    const data = {
+      current,
+      names: Object.keys(this.allComponents),
+    };
+    const dialogRef = this.dialog.open(ComponentSelectorModalComponent, {
       width: '360px',
-      data: this.devices
+      data,
     });
 
-    dialogRef.afterClosed().pipe(first()).subscribe((result: Devices) => {
+    dialogRef.afterClosed().pipe(first()).subscribe((result: string) => {
       if (result) {
-        this.devices = result;
+        this.component = this.allComponents[result];
         this.changeDetector.detectChanges();
       }
     });

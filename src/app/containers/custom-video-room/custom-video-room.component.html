@@ -12,19 +12,17 @@
     [wsUrl]='wsUrl'
     [httpUrl]='httpUrl'
     [roomId]='roomId'
-    [isMuted]='isMuted'
-    [devices]='devices'
+    [component]='component'
     [pin]='pin'
     (janusError)='onError($event)'
   >
   </janus-videoroom>
 
-  <app-dock
+  <app-custom-video-room-dock
     [@openClose]="dockOpen ? 'open' : 'closed'"
-    [isMuted]='isMuted'
-    (toggleMute)='toggleMute()'
-    (openDevices)='onOpenDevices()'
+    (openComponents)='onOpenComponents()'
     (openServer)='onOpenServer()'
   >
-  </app-dock>
+  </app-custom-video-room-dock>
 </div>
+

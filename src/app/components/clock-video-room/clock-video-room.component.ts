@@ -12,29 +12,40 @@ import {
 } from '@angular/core';
 
 import {
-  VideoRoomComponent,
-  RoomInfo,
-  JanusRole,
+  AttachRemoteFeedEvent,
   Devices,
-  RemoteFeed,
-  PublishOwnFeedPayload,
+  JanusRole,
+  PublishOwnFeedEvent,
   PublishState,
+  RemoteFeed,
+  RoomInfo,
   RoomInfoState,
+  VideoRoomComponent,
 } from 'janus-angular';
 
+
+/**
+ * Custom Video Room Component
+ *
+ * This video room doesn't subscribe to any other feeds and publishes a functioning
+ * clock as a video stream. This doesn't use any video capture device locally. It
+ * demonstrates how the janus-videoroom component can publish a stream straight from
+ * a canvas element and therefore can be productive for some purposes without even
+ * utilizing a camera/microphone locally.
+ */
 @Component({
-  selector: 'app-custom-video-room',
-  templateUrl: './custom-video-room.component.html',
-  styleUrls: ['./custom-video-room.component.scss']
+  selector: 'app-clock-video-room',
+  templateUrl: './clock-video-room.component.html',
+  styleUrls: ['./clock-video-room.component.scss']
 })
-export class CustomVideoRoomComponent implements VideoRoomComponent, AfterViewInit, OnInit {
+export class ClockVideoRoomComponent implements VideoRoomComponent, AfterViewInit, OnInit {
 
   @Input()
   get roomInfo(): RoomInfo { return this.privateRoomInfo; }
   set roomInfo(roomInfo: RoomInfo) {
     this.privateRoomInfo = roomInfo;
 
-    // Once we're ready to publish, go to it
+    // Once we're ready to publish, go do it
     if (
       roomInfo.state === RoomInfoState.joined
       && roomInfo.publishState === PublishState.ready
@@ -43,6 +54,10 @@ export class CustomVideoRoomComponent implements VideoRoomComponent, AfterViewIn
         audioDeviceId: null,
         videoDeviceId: null,
         canvasId: 'canvas-self',
+
+        // This instructs janus-angular to skip any provisioning of capture
+        // devices and stream directly from the canvas. When setting this to
+        // true, it's the job of the component to draw on the canvas as desired
         skipVideoCapture: true,
       });
     }
@@ -55,7 +70,10 @@ export class CustomVideoRoomComponent implements VideoRoomComponent, AfterViewIn
   requestSubstream = new EventEmitter<{feed: RemoteFeed, substreamId: number}>();
 
   @Output()
-  publishOwnFeed = new EventEmitter<PublishOwnFeedPayload>();
+  publishOwnFeed = new EventEmitter<PublishOwnFeedEvent>();
+
+  @Output()
+  attachRemoteFeed = new EventEmitter<AttachRemoteFeedEvent>();
 
   @ViewChild('draw')
   canvas: ElementRef;
@@ -74,13 +92,13 @@ export class CustomVideoRoomComponent implements VideoRoomComponent, AfterViewIn
     const now = new Date();
     const ctx = this.canvas.nativeElement.getContext('2d');
     ctx.save();
-    ctx.clearRect(0, 0, 150, 150);
+    ctx.clearRect(0, 0, 640, 480);
 
     ctx.fillStyle = 'rgb(200, 200, 200)';
-    ctx.fillRect(0, 0, 150, 150);
+    ctx.fillRect(0, 0, 640, 480);
 
-    ctx.translate(75, 75);
-    ctx.scale(0.4, 0.4);
+    ctx.translate(320, 240);
+    ctx.scale(1.5, 1.5);
     ctx.rotate(-Math.PI / 2);
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'white';

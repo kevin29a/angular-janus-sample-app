@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { VideoRoomComponent } from './containers/video-room/video-room.component';
 import { MinimalVideoRoomComponent } from './containers/minimal-video-room/minimal-video-room.component';
+import { CustomVideoRoomComponent } from './containers/custom-video-room/custom-video-room.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,9 @@ const routes: Routes = [
   }, {
     path: 'minimal',
     component: MinimalVideoRoomComponent,
+  }, {
+    path: 'custom',
+    component: CustomVideoRoomComponent,
   },
 ];
 

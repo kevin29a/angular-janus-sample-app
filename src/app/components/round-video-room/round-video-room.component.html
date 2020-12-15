@@ -1,0 +1,36 @@
+<div class='video-room-viewport' #viewport>
+
+  <div
+    *ngIf='publishing'
+    [ngStyle]="{ 'width.px': selfVideoWidth,
+                 'height.px': selfVideoHeight,
+                 'right.px': selfVideoRight,
+                 'bottom.px': selfVideoBottom}"
+    class='grid-video'
+    [class.speaker]='mode === "speaker"'
+  >
+    <janus-self-video
+      *ngIf="roomInfo && roomInfo.state === 'joined'"
+      data-cy='default-video-room-self-video'
+      [roomInfo]="roomInfo"
+      [devices]='devices'
+      (publishOwnFeed)='onPublishOwnFeed($event)'
+      ></janus-self-video>
+  </div>
+
+  <div
+    *ngFor="let remoteFeed of readyRemoteFeeds; trackBy:trackByFeedId"
+    class='grid-video'
+    [style.width.px]="videoWidth"
+    [style.height.px]="videoHeight"
+  >
+    <janus-video-box
+      data-cy='default-video-room-video-box'
+      [remoteFeed]='remoteFeed'
+      [mode]='mode'
+      [devices]='devices'
+      (maximize)='onMaximize($event)'
+      (requestSubstream)='onRequestSubstream($event)'
+    ></janus-video-box>
+  </div>
+</div>

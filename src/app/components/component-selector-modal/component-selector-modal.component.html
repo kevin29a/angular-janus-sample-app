@@ -1,0 +1,24 @@
+<div class='header'>
+  <h1 mat-dialog-title>Pick Component</h1>
+  <span class='flex'></span>
+  <i
+    class="fas fa-times"
+    (click)="onCancel()"
+    ></i>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]='form'>
+    <mat-radio-group formControlName='component'>
+      <mat-radio-button
+        *ngFor='let name of data.names' [value]="name">
+        {{ name }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class='button-row center-flex' mat-dialog-actions>
+  <button (click)='onSave()' mat-raised-button color="primary">Save</button>
+</div>
