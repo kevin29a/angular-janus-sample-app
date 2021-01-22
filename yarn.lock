@@ -4887,6 +4887,13 @@ istanbul-reports@^3.0.2:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
 
+janus-angular@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/janus-angular/-/janus-angular-0.1.6.tgz#6e3bca1a423892f90a98a89a061acc4922ff78b2"
+  integrity sha512-gvfvieWUrsEB+qWk8PEWokpQPgmuqFxcZkazo/YxIlzqMtHiv4f9lbQX+Pf7Ec1Bitj/4FqvMobdVLYHyE7wqQ==
+  dependencies:
+    tslib "^2.0.0"
+
 jasmine-core@^3.6.0, jasmine-core@~3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.6.0.tgz#491f3bb23941799c353ceb7a45b38a950ebc5a20"
